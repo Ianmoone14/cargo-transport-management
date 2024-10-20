@@ -1,8 +1,7 @@
 ﻿using CargoTransportSolution.Models;
-using CargoTransportSolution.ViewModels.Storage;
+using CargoTransportSolution.Services;
 using CargoTransportSolution.Views.Cargo;
-
-using System;
+using CargoTransportSolution.Views.Storage;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
@@ -12,6 +11,7 @@ namespace CargoTransportSolution.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigationService;
         private string _username;
         private SecureString _password;
         private string _errorMessage;
@@ -45,17 +45,18 @@ namespace CargoTransportSolution.ViewModels
         public ICommand LoginCommand { get; }
         public ICommand RecoverPasswordCommand { get; }
 
-        public LoginViewModel()
+        public LoginViewModel(INavigationService navigationService)
         {
+            _navigationService = navigationService;
             LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
             RecoverPasswordCommand = new ViewModelCommand(p => ExecuteRecoverPassCommand("", ""));
 
             // Initialize hardcoded users
             _users = new List<UserModel>
-    {
-        new UserModel { Username = "cargo", Password = "cargo123", Role = "Cargo" },
-        new UserModel { Username = "storage", Password = "storage123", Role = "Storage" }
-        };
+            {
+                new UserModel { Username = "cargo", Password = "cargo123", Role = "Cargo" },
+                new UserModel { Username = "storage", Password = "storage123", Role = "Storage" }
+            };
         }
 
         private void ExecuteLoginCommand(object obj)
@@ -67,16 +68,14 @@ namespace CargoTransportSolution.ViewModels
                 ErrorMessage = string.Empty;
                 IsVisible = false; // This will hide the login window
 
-                // Here you would typically navigate to the appropriate view
-                // For example:
+                // Navigate to the appropriate view based on the user's role
                 if (user.Role == "Cargo")
                 {
-                    // Navigate to Cargo view
-                    // You might need to implement a navigation service or use a messenger to communicate with the main application
+                    _navigationService.NavigateTo<MainView>();
                 }
                 else if (user.Role == "Storage")
                 {
-                    // Navigate to Storage view
+                    _navigationService.NavigateTo<StorageMainView>();
                 }
             }
             else

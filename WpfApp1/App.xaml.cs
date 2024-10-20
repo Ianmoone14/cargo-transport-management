@@ -1,6 +1,8 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Windows;
+using CargoTransportSolution.Services;
+using CargoTransportSolution.ViewModels;
 using CargoTransportSolution.Views;
 using CargoTransportSolution.Views.Cargo;
 
@@ -13,14 +15,20 @@ namespace CargoTransportSolution
     {
         protected void ApplicationStart(object sender, StartupEventArgs e)
         {
-            var loginView = new LoginView();
+
+            INavigationService navigationService = new NavigationService();
+            LoginViewModel loginViewModel = new LoginViewModel(navigationService);
+
+            LoginView loginView = new LoginView
+            {
+                DataContext = loginViewModel
+            };
             loginView.Show();
+
             loginView.IsVisibleChanged += (s, ev) =>
             {
-                if (loginView.IsVisible == false && loginView.IsLoaded)
+                if (loginView.IsVisible == false)
                 {
-                    var mainView = new MainView();
-                    mainView.Show();
                     loginView.Close();
                 }
             };
