@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:CargoTransportSolution.Views"
         xmlns:viewModel="clr-namespace:CargoTransportSolution.ViewModels" 
         xmlns:customcontrols="clr-namespace:CargoTransportSolution.CustomControls"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
         Title="LoginView" Height="550" Width="800"
         WindowStyle="None"
@@ -68,78 +69,27 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Text="LOG IN"
-                               Foreground="{StaticResource titleColor3}"
+                               Foreground="Black"
                                FontSize="10"
                                FontFamily="Montserrat"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                Margin="10,0,0,0"/>
 
-                    <Button x:Name="btnMinimize"                           
-                            BorderThickness="0"
-                            Content="-"
-                            Foreground="White"
-                            FontSize="16"
-                            FontFamily="Montserrat"
-                            Cursor="Hand"
-                            Grid.Column="1"
-                            Click="btnMinimize_Click">
-
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#28AEED"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#278BEF"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-
+                    <Button x:Name="btnMinimize"
+                            Style="{StaticResource controlButton}"
+                            Tag="{StaticResource color8}"
+                            Click="btnMinimize_Click"
+                            Grid.Column="1">
+                        <fa:IconImage Icon="WindowMinimize" Width="12" Style="{StaticResource controlButtonIcon}"/>
                     </Button>
 
-                    <Button x:Name="btnClose"                          
-                            BorderThickness="0"
-                            Content="X"
-                            Foreground="White"
-                            FontSize="12"
-                            FontFamily="Montserrat"
-                            Cursor="Hand"
-                            Grid.Column="2"
-                            Click="btnClose_Click">
-
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#DA34AE"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#C62DAE"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
+                    <Button x:Name="btnClose"
+                            Style="{StaticResource controlButton}"
+                            Tag="{StaticResource color4}"
+                            Click="btnClose_Click"
+                            Grid.Column="2">                        
+                        <fa:IconImage Icon="Xmark" Style="{StaticResource controlButtonIcon}"/>
                     </Button>
                 </Grid>
 
@@ -152,14 +102,14 @@
                            Width="100" Height="100"/>
 
                     <TextBlock Text="Cargo Transport"
-                               Foreground="White"
+                               Foreground="Black"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
 
                     <TextBlock Text="SOLUTION"
-                               Foreground="LightGray"
+                               Foreground="Black"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
@@ -169,7 +119,7 @@
 
 
                     <TextBlock Text="Username"
-                               Foreground="DarkGray"
+                               Foreground="Black"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"                             
@@ -180,7 +130,7 @@
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
-                             Foreground="White"
+                             Foreground="Black"
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,2"
@@ -197,7 +147,7 @@
                     </TextBox>
 
                     <TextBlock Text="Password"
-                           Foreground="DarkGray"
+                           Foreground="Black"
                            FontSize="12"
                            FontWeight="Medium"
                            FontFamily="Montserrat"                             
@@ -205,7 +155,7 @@
 
                     <customcontrols:BindablePasswordBox Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                         Height="28"                            
-                                                        Margin="0,5,0,0">
+                                                        Margin="0,5,0,0" Loaded="BindablePasswordBox_Loaded">
                     </customcontrols:BindablePasswordBox>
                     
                     <TextBlock Text="{Binding ErrorMessage}"

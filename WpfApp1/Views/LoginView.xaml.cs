@@ -40,5 +40,10 @@ namespace CargoTransportSolution.Views
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e) { }
+
+        private void BindablePasswordBox_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
