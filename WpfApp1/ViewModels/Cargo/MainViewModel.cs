@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Navigation;
 
-namespace CargoTransportSolution.ViewModels
+namespace CargoTransportSolution.ViewModels.Cargo
 {
-     public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
 
 
         public MainViewModel()
         {
-            
+
         }
     }
 }

@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 using System.Runtime;
 using System.Windows.Interop;
 
-namespace CargoTransportSolution.Views
+namespace CargoTransportSolution.Views.Cargo
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -28,4 +28,9 @@
     <Resource Include="Images\usericon.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\Storage\" />
+    <Folder Include="Views\Storage\" />
+  </ItemGroup>
+
 </Project>
