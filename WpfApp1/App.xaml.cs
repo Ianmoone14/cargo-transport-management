@@ -1,33 +1,29 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 using CargoTransportSolution.Services;
 using CargoTransportSolution.ViewModels;
 using CargoTransportSolution.Views;
-using CargoTransportSolution.Views.Cargo;
 
 namespace CargoTransportSolution
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
-        protected void ApplicationStart(object sender, StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
+            base.OnStartup(e);
+            ApplicationStart();
+        }
 
+        private void ApplicationStart()
+        {
             INavigationService navigationService = new NavigationService();
             LoginViewModel loginViewModel = new LoginViewModel(navigationService);
 
-            LoginView loginView = new LoginView
-            {
-                DataContext = loginViewModel
-            };
+            LoginView loginView = new LoginView(loginViewModel);
             loginView.Show();
 
             loginView.IsVisibleChanged += (s, ev) =>
             {
-                if (loginView.IsVisible == false)
+                if (loginView.IsVisible == false && loginView.IsLoaded)
                 {
                     loginView.Close();
                 }
