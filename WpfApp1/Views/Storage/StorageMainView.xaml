@@ -1,0 +1,13 @@
+<Window x:Class="CargoTransportSolution.Views.Storage.StorageMainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModel="clr-namespace:CargoTransportSolution.ViewModels.Storage"
+        Title="Storage Management" Height="700" Width="1300">
+
+    <Window.DataContext>
+        <viewModel:StorageMainView/>
+    </Window.DataContext>
+
+    <!-- Modify the content here for storage-specific elements -->
+
+</Window>

@@ -29,7 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\Storage\" />
     <Folder Include="Views\Storage\" />
   </ItemGroup>
 
