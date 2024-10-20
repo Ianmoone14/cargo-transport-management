@@ -35,5 +35,6 @@ namespace CargoTransportSolution.Views
                 ((CustomControls.BindablePasswordBox)sender).Password = viewModel.Password;
             }
         }
+
     }
 }

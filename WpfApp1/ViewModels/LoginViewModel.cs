@@ -89,6 +89,12 @@ namespace CargoTransportSolution.ViewModels
             return !string.IsNullOrWhiteSpace(Username) && Username.Length >= 3 && Password != null && Password.Length >= 3;
         }
 
+        public bool IsViewVisible
+        {
+            get => _isViewVisible;
+            set { _isViewVisible = value; OnPropertyChanged(nameof(IsViewVisible)); }
+        }
+
         private void ExecuteRecoverPassCommand(string username, string email)
         {
             // Implement password recovery logic here
